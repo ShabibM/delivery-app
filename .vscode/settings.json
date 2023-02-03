@@ -1,0 +1,7 @@
+{
+  "prettier.bracketSameLine": false,
+  "prettier.useTabs": true,
+  "prettier.printWidth": 80,
+  "prettier.singleAttributePerLine": true,
+  "tailwindCSS.emmetCompletions": true
+}
