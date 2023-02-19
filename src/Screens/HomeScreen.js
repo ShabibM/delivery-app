@@ -85,14 +85,22 @@ export default function HomeScreen() {
 
 			<ScrollView
 				className="bg-gray-100 "
-				contentContainerStyle={{
-					background: "red",
-				}}
+				contentContainerStyle={{}}
 			>
 				{/* Categories */}
 				<Category />
+
 				{/* Featured */}
-				<FeaturedRow title="Featured Meals" />
+				<FeaturedRow
+					title="Featured Meals"
+					desc="most sold meals"
+				/>
+
+				{/* Discounts */}
+				<FeaturedRow
+					title="Discounted"
+					desc="%25 price off, what are you waiting for :P "
+				/>
 			</ScrollView>
 		</SafeAreaView>
 	);
