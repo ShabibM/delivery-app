@@ -1,6 +1,5 @@
-import sanityClient from "@sanity/client";
-import { ImageUrlBuilder } from "@sanity/image-url/lib/types/builder";
-import { config } from "dotenv";
+import { createClient } from "@sanity/client";
+import ImageUrlBuilder from "@sanity/image-url";
 
 /**
  * Establishing the backend connection with Sanity
@@ -9,8 +8,8 @@ import { config } from "dotenv";
  * sanity cors add http://localhost:3000
  */
 
-const client = sanityClient({
-	projectId: process.env.SANITY_PRIJECT_ID,
+const client = createClient({
+	projectId: "5dv6xvp5", // use env varibles
 	dataset: "production",
 	useCdn: true,
 	apiVersion: "2021-10-21",

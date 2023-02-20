@@ -11,21 +11,36 @@ import {
 	TextInput,
 	ScrollView,
 } from "react-native";
-import React, { useLayoutEffect } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
-import {
-	HomeModernIcon,
-	ChevronDownIcon,
-} from "react-native-heroicons/outline";
+import { ChevronDownIcon } from "react-native-heroicons/outline";
 import {
 	MagnifyingGlassIcon,
 	AdjustmentsHorizontalIcon,
 } from "react-native-heroicons/solid";
 import Category from "../components/Category";
 import FeaturedRow from "../components/FeaturedRow";
+import sanityClient from "../../sanity";
 
 export default function HomeScreen() {
 	const nav = useNavigation();
+	const [resturants, setResturants] = useState([]);
+
+	// Fetching returants from the sanity backen
+	useEffect(() => {
+		sanityClient
+			.fetch(
+				`
+		*[_type == 'resturants']{
+			..., meals[]->{
+			  name, price
+			}, category->{...}
+		  }`
+			)
+			.then((data) => setResturants(data));
+	}, []);
+	console.log(resturants);
+	
 
 	useLayoutEffect(() => {
 		nav.setOptions({
@@ -91,10 +106,13 @@ export default function HomeScreen() {
 				<Category />
 
 				{/* Featured */}
-				<FeaturedRow
-					title="Featured Meals"
-					desc="most sold meals"
-				/>
+
+				{resturants?.map((resturant) => {
+					<FeaturedRow
+						title={resturant.name}
+						desc={resturant.desc}
+					/>;
+				})}
 
 				{/* Discounts */}
 				<FeaturedRow
