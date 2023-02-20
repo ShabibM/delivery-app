@@ -84,7 +84,7 @@ export default function HomeScreen() {
 			{/* Body (Scroll) */}
 
 			<ScrollView
-				className="bg-gray-100 "
+				className=" "
 				contentContainerStyle={{}}
 			>
 				{/* Categories */}
