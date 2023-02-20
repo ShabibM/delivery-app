@@ -8,7 +8,8 @@ export default defineType({
   name: 'resturants',
   title: 'Resturant',
   type: 'document',
-  fields: [ // columns
+  fields: [
+    // columns
     {
       name: 'name',
       type: 'string',
@@ -29,7 +30,7 @@ export default defineType({
     },
     {
       name: 'image',
-      type: 'string',
+      type: 'image',
       title: 'Resturant image',
     },
     {
